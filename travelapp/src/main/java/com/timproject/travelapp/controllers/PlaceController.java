@@ -1,7 +1,7 @@
 package com.timproject.travelapp.controllers;
 
 
-import com.timproject.travelapp.dao.entities.PlaceEntity;
+import com.timproject.travelapp.dao.entities.Place;
 import com.timproject.travelapp.managers.PlaceManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,23 +21,23 @@ public class PlaceController {
 
 
     @GetMapping("/all")
-    public Iterable<PlaceEntity> getAllPlaces() {
+    public Iterable<Place> getAllPlaces() {
         return placeManager.findAll();
     }
 
     @GetMapping
-    public Optional<PlaceEntity> getPlaceById(@RequestParam Long id) {
+    public Optional<Place> getPlaceById(@RequestParam Long id) {
         return placeManager.findById(id);
     }
 
     @PostMapping
-    public void addPlace(@RequestBody PlaceEntity placeEntity) {
-        placeManager.save(placeEntity);
+    public void addPlace(@RequestBody Place place) {
+        placeManager.save(place);
     }
 
     @PutMapping
-    public void updatePlace(@RequestBody PlaceEntity placeEntity) {
-        placeManager.save(placeEntity);
+    public void updatePlace(@RequestBody Place place) {
+        placeManager.save(place);
     }
 
     @DeleteMapping

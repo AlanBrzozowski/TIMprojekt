@@ -1,7 +1,7 @@
 package com.timproject.travelapp.managers;
 
 
-import com.timproject.travelapp.dao.entities.PlaceEntity;
+import com.timproject.travelapp.dao.entities.Place;
 import com.timproject.travelapp.dao.repositories.PlaceRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,16 +20,16 @@ public class PlaceManager {
     }
 
 
-    public Iterable<PlaceEntity> findAll() {
+    public Iterable<Place> findAll() {
         return  placeRepo.findAll();
     }
 
-    public Optional<PlaceEntity> findById(Long id) {
+    public Optional<Place> findById(Long id) {
         return placeRepo.findById(id);
     }
 
-    public void save(PlaceEntity placeEntity) {
-        placeRepo.save(placeEntity);
+    public void save(Place place) {
+        placeRepo.save(place);
     }
 
     public void deleteById(Long id) {
