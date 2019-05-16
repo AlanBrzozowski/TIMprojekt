@@ -10,7 +10,7 @@ public class Place {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String name;
     private String address;
     private String info;
@@ -19,17 +19,17 @@ public class Place {
     private Boolean accepted;
     private Boolean active;
     @Column(name = "user_id", nullable = false)
-    private Long userId;
+    private long userId;
     @ManyToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    private User userByUserId;
-    @OneToMany(mappedBy = "placeByPlaceId")
-    private Collection<Visit> visitsById;
+    @JoinColumn (name = "user_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+//    @JsonBackReference
+    private User user;
+
 
     public Place() {
     }
 
-    public Place(String name, String address, String info, Double latitude, Double longitude, Boolean accepted, Boolean active, Long userId, User userByUserId, Collection<Visit> visitsById) {
+    public Place(String name, String address, String info, Double latitude, Double longitude, Boolean accepted, Boolean active, long userId, User user) {
         this.name = name;
         this.address = address;
         this.info = info;
@@ -38,11 +38,8 @@ public class Place {
         this.accepted = accepted;
         this.active = active;
         this.userId = userId;
-        this.userByUserId = userByUserId;
-        this.visitsById = visitsById;
+        this.user = user;
     }
-
-
 
     public String getAddress() {
         return address;
@@ -68,35 +65,11 @@ public class Place {
         this.active = active;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public User getUserByUserId() {
-        return userByUserId;
-    }
-
-    public void setUserByUserId(User userByUserId) {
-        this.userByUserId = userByUserId;
-    }
-
-    public Collection<Visit> getVisitsById() {
-        return visitsById;
-    }
-
-    public void setVisitsById(Collection<Visit> visitsById) {
-        this.visitsById = visitsById;
-    }
-
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -130,5 +103,21 @@ public class Place {
 
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

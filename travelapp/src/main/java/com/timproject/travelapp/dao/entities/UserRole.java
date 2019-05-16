@@ -10,23 +10,26 @@ public class UserRole {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String label;
-    @OneToMany(mappedBy = "userRoleByUserRoleId")
-    private Collection<User> usersById;
+//    @OneToMany(mappedBy = "userRoleByUserRoleId")
+//    private Collection<User> usersById;
 
     public UserRole(){
 
     }
-    public UserRole(String label, Collection<User> usersById){
+    public UserRole(String label
+//                    Collection<User> usersById
+    )
+    {
         this.label=label;
-        this.usersById = usersById;
+//        this.usersById = usersById;
     }
-
-    public Collection<User> getUsersById() {
-        return usersById;
-    }
-    public void setUsersById(Collection<User> usersById) {
-        this.usersById = usersById;
-    }
+//
+//    public Collection<User> getUsersById() {
+//        return usersById;
+//    }
+//    public void setUsersById(Collection<User> usersById) {
+//        this.usersById = usersById;
+//    }
 
     public Long getId() {
         return id;

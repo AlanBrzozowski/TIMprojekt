@@ -2,44 +2,37 @@ package com.timproject.travelapp.dao.entities;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String username;
     private String password;
     private Boolean active;
-    @Column(name = "user_role_id", nullable = false)
-    private Long userRoleId;
-    @OneToMany(mappedBy = "userByUserId")
-    private Collection<Place> placesById;
-    @ManyToOne
-    @JoinColumn(name = "user_role_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    private UserRole userRoleByUserRoleId;
-    @OneToMany(mappedBy = "userByUserId")
-    private Collection<Visit> visitsById;
+    @OneToMany(mappedBy = "user")
+    private Set<Place> places = new HashSet<Place>();
+
 
     public User() {
 
     }
 
-    public User(String username, String password, Boolean active, Long userRoleId, Collection<Place> placesById, UserRole userRoleByUserRoleId, Collection<Visit> visitsById){
+    public User(String username, String password, Boolean active, Set<Place> places) {
         this.username = username;
         this.password = password;
         this.active = active;
-        this.userRoleId = userRoleId;
-        this.placesById = placesById;
-        this.userRoleByUserRoleId = userRoleByUserRoleId;
-        this.visitsById  = visitsById;
+        this.places = places;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -67,35 +60,4 @@ public class User {
         this.active = active;
     }
 
-    public Long getUserRoleId() {
-        return userRoleId;
-    }
-
-    public void setUserRoleId(Long userRoleId) {
-        this.userRoleId = userRoleId;
-    }
-
-    public Collection<Place> getPlacesById() {
-        return placesById;
-    }
-
-    public void setPlacesById(Collection<Place> placesById) {
-        this.placesById = placesById;
-    }
-
-    public UserRole getUserRoleByUserRoleId() {
-        return userRoleByUserRoleId;
-    }
-
-    public void setUserRoleByUserRoleId(UserRole userRoleByUserRoleId) {
-        this.userRoleByUserRoleId = userRoleByUserRoleId;
-    }
-
-    public Collection<Visit> getVisitsById() {
-        return visitsById;
-    }
-
-    public void setVisitsById(Collection<Visit> visitsById) {
-        this.visitsById = visitsById;
-    }
 }

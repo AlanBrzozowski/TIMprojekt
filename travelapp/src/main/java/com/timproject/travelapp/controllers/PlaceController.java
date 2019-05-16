@@ -2,14 +2,18 @@ package com.timproject.travelapp.controllers;
 
 
 import com.timproject.travelapp.dao.entities.Place;
+import com.timproject.travelapp.dto.PlaceDTO;
 import com.timproject.travelapp.managers.PlaceManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/travelapp/place")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+@Controller
 public class PlaceController {
 
     private PlaceManager placeManager;
@@ -20,14 +24,15 @@ public class PlaceController {
     }
 
 
-    @GetMapping("/all")
-    public Iterable<Place> getAllPlaces() {
-        return placeManager.findAll();
+    @GetMapping(value="travelapp/place/all")
+    public ResponseEntity getAllPlaces() {
+        return new ResponseEntity<>(placeManager.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping
-    public Optional<Place> getPlaceById(@RequestParam Long id) {
-        return placeManager.findById(id);
+    @GetMapping(value = "travelapp/place/{id}")
+    public ResponseEntity getPlaceById(@PathVariable long id) {
+        PlaceDTO placeDTO = placeManager.findById(id);
+        return new ResponseEntity<>(placeDTO, HttpStatus.OK);
     }
 
     @PostMapping
