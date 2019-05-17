@@ -2,10 +2,10 @@ package com.timproject.travelapp.dao.entities;
 
 
 import javax.persistence.*;
-import java.util.Collection;
+
 
 @Entity
-public class Place {
+public class PlaceEntity {
 
 
     @Id
@@ -22,14 +22,13 @@ public class Place {
     private long userId;
     @ManyToOne
     @JoinColumn (name = "user_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-//    @JsonBackReference
-    private User user;
+    private UserEntity userEntity;
 
 
-    public Place() {
+    public PlaceEntity() {
     }
 
-    public Place(String name, String address, String info, Double latitude, Double longitude, Boolean accepted, Boolean active, long userId, User user) {
+    public PlaceEntity(String name, String address, String info, Double latitude, Double longitude, Boolean accepted, Boolean active, long userId, UserEntity userEntity) {
         this.name = name;
         this.address = address;
         this.info = info;
@@ -38,7 +37,7 @@ public class Place {
         this.accepted = accepted;
         this.active = active;
         this.userId = userId;
-        this.user = user;
+        this.userEntity = userEntity;
     }
 
     public String getAddress() {
@@ -105,12 +104,12 @@ public class Place {
         this.longitude = longitude;
     }
 
-    public User getUser() {
-        return user;
+    public UserEntity getUserEntity() {
+        return userEntity;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 
     public long getUserId() {

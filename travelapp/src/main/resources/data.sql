@@ -1,19 +1,19 @@
-INSERT INTO USER_ROLE (ID, LABEL) VALUES
+INSERT INTO USER_ROLE_ENTITY (ID, LABEL) VALUES
   (1, 'Administrator'),
   (2, 'Użytkownik');
 
--- INSERT INTO USER (ID, USERNAME, PASSWORD, ACTIVE, USER_ROLE_ID) VALUES
--- --   (1, 'admin', 'admin', true, 1),
--- --   (2, 'krysjacz', 'haslomaslo', true, 2),
--- --   (3, 'alanbrzo', 'podajehaslookon', true, 2);
+INSERT INTO USER_ENTITY (ID, USERNAME, PASSWORD, ACTIVE, USER_ROLE_ID) VALUES
+  (1, 'admin', 'admin', true, 1),
+  (2, 'krysjacz', 'haslomaslo', true, 2),
+  (3, 'alanbrzo', 'podajehaslookon', true, 2);
 
-INSERT INTO USER (ID, USERNAME, PASSWORD, ACTIVE) VALUES
-  (1, 'admin', 'admin', true),
-  (2, 'krysjacz', 'haslomaslo', true),
-  (3, 'alanbrzo', 'podajehaslookon', true);
+-- INSERT INTO USER (ID, USERNAME, PASSWORD, ACTIVE) VALUES
+--   (1, 'admin', 'admin', true),
+--   (2, 'krysjacz', 'haslomaslo', true),
+--   (3, 'alanbrzo', 'podajehaslookon', true);
 
 
-INSERT INTO PLACE (NAME, ADDRESS, INFO, LATITUDE, LONGITUDE, ACCEPTED, ACTIVE, USER_ID) VALUES
+INSERT INTO PLACE_ENTITY (NAME, ADDRESS, INFO, LATITUDE, LONGITUDE, ACCEPTED, ACTIVE, USER_ID) VALUES
   ('Kopiec Powstania Warszawskiego', 'Aleja Godziny W, 00-716 Warszawa', 'Kopiec upamiętniający ofiary Powstania Warszawskiego', 52.211155, 21.055765, true, true, 1),
   ('Pomnik Braterstwa Broni w Warszawie', 'Plac Wileński, 03-403 Warszawa', 'Pomnik poświęcony żołnierzom Armii Czerwonej', 52.255070, 21.034454, true, false, 1),
   ('Zamek Królewski w Warszawie', 'plac Zamkowy 4, 00-277 Warszawa', 'Zamek Królewski znajdujący się na Warszawskiej Starówce', 52.247743, 21.013990, true, true, 1),

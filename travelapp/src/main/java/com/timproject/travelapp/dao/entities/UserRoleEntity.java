@@ -4,32 +4,24 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-public class UserRole {
+public class UserRoleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String label;
-//    @OneToMany(mappedBy = "userRoleByUserRoleId")
-//    private Collection<User> usersById;
+    @OneToMany(mappedBy = "userRoleEntity")
+    private Collection<UserEntity> userEntities;
 
-    public UserRole(){
+    public UserRoleEntity(){
 
     }
-    public UserRole(String label
-//                    Collection<User> usersById
-    )
+    public UserRoleEntity(String label, Collection<UserEntity> userEntities)
     {
         this.label=label;
-//        this.usersById = usersById;
+        this.userEntities = userEntities;
     }
-//
-//    public Collection<User> getUsersById() {
-//        return usersById;
-//    }
-//    public void setUsersById(Collection<User> usersById) {
-//        this.usersById = usersById;
-//    }
+
 
     public Long getId() {
         return id;
