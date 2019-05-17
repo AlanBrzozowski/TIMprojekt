@@ -18,7 +18,6 @@ import java.util.Optional;
 public class PlaceManager {
 
     private PlaceRepo placeRepo;
-    private UserRepo userRepo;
 
     @Autowired
     public PlaceManager(PlaceRepo placeRepo) {
@@ -37,22 +36,12 @@ public class PlaceManager {
                 place.getAccepted(),
                 place.getActive(),
                 place.getUserId()
-//                username
                );
     }
 
     private ArrayList<PlaceDTO> convertPlaceListToPlaceDTOList(List<Place> places) {
         ArrayList<PlaceDTO> placeDTOS = new ArrayList<>(places.size());
-        User user;
-        String username;
-//        System.out.println("DUPA");
         for (Place place: places) {
-//            user = userRepo.findById(place.getUserId());
-//            if (user == null) {
-//                username = "-";
-//            } else {
-//                username = user.getUsername();
-//            }
             placeDTOS.add(new PlaceDTO(
                     place.getId(),
                     place.getName(),
@@ -63,7 +52,6 @@ public class PlaceManager {
                     place.getAccepted(),
                     place.getActive(),
                     place.getUserId()
-//                    username = user.getUsername()
             ));
         }
         return placeDTOS;
@@ -71,18 +59,7 @@ public class PlaceManager {
 
     public PlaceDTO findById(long id) {
         Place place = placeRepo.findById(id);
-//        if (place != null) {
-//            User user = userRepo.findById(place.getUserId());
-//            String username;
-//            if (user == null) {
-//                username = "-";
-//            } else {
-//                username = user.getUsername();
-//            }
             return convertPlaceToPlaceDTO(place);
-//        } else {
-//            return null;
-//        }
     }
 
     public List<PlaceDTO> findAll() {
