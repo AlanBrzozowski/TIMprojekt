@@ -1,10 +1,9 @@
 package com.timproject.travelapp.dao.entities;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
-public class Comment {
+public class CommentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,18 +15,18 @@ public class Comment {
     private Long visitId;
     @ManyToOne
     @JoinColumn(name = "visit_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    private Visit visitByVisitId;
+    private VisitEntity visitByVisitEntityId;
 
-    public Comment(){
+    public CommentEntity(){
 
     }
 
-    public Comment(String text, Boolean recommended, Boolean active, Long visitId, Visit visitByVisitId){
+    public CommentEntity(String text, Boolean recommended, Boolean active, Long visitId, VisitEntity visitByVisitEntityId){
         this.text = text;
         this.recommended = recommended;
         this.active = active;
         this.visitId = visitId;
-        this.visitByVisitId = visitByVisitId;
+        this.visitByVisitEntityId = visitByVisitEntityId;
     }
 
     public Long getId() {
@@ -70,11 +69,11 @@ public class Comment {
         this.visitId = visitId;
     }
 
-    public Visit getVisitByVisitId() {
-        return visitByVisitId;
+    public VisitEntity getVisitByVisitEntityId() {
+        return visitByVisitEntityId;
     }
 
-    public void setVisitByVisitId(Visit visitByVisitId) {
-        this.visitByVisitId = visitByVisitId;
+    public void setVisitByVisitEntityId(VisitEntity visitByVisitEntityId) {
+        this.visitByVisitEntityId = visitByVisitEntityId;
     }
 }

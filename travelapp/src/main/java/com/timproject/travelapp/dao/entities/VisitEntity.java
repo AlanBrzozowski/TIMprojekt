@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 @Entity
-public class Visit {
+public class VisitEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,28 +17,28 @@ public class Visit {
     private Long userId;
     @Column(name = "place_id", nullable = false)
     private Long placeId;
-    @OneToMany(mappedBy = "visitByVisitId")
-    private Collection<Comment> commentsById;
+    @OneToMany(mappedBy = "visitByVisitEntityId")
+    private Collection<CommentEntity> commentsById;
     @ManyToOne
     @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    private User userByUserId;
+    private UserEntity userByUserEntityId;
     @ManyToOne
     @JoinColumn(name = "place_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
-    private Place placeByPlaceId;
+    private PlaceEntity placeByPlaceEntityId;
 
-    public Visit(){
+    public VisitEntity(){
 
     }
 
-    public Visit(Timestamp date, Boolean visited, Boolean visible, Long userId, Long placeId, Collection<Comment> commentsById, User userByUserId, Place placeByPlaceId){
+    public VisitEntity(Timestamp date, Boolean visited, Boolean visible, Long userId, Long placeId, Collection<CommentEntity> commentsById, UserEntity userByUserEntityId, PlaceEntity placeByPlaceEntityId){
         this.date = date;
         this.visited = visited;
         this.visible = visible;
         this.userId = userId;
         this.placeId = placeId;
         this.commentsById = commentsById;
-        this.userByUserId = userByUserId;
-        this.placeByPlaceId = placeByPlaceId;
+        this.userByUserEntityId = userByUserEntityId;
+        this.placeByPlaceEntityId = placeByPlaceEntityId;
     }
 
     public Long getId() {
@@ -89,29 +89,29 @@ public class Visit {
         this.placeId = placeId;
     }
 
-    public Collection<Comment> getCommentsById() {
+    public Collection<CommentEntity> getCommentsById() {
         return commentsById;
     }
 
-    public void setCommentsById(Collection<Comment> commentsById) {
+    public void setCommentsById(Collection<CommentEntity> commentsById) {
         this.commentsById = commentsById;
     }
 
 
-    public User getUserByUserId() {
-        return userByUserId;
+    public UserEntity getUserByUserEntityId() {
+        return userByUserEntityId;
     }
 
-    public void setUserByUserId(User userByUserId) {
-        this.userByUserId = userByUserId;
+    public void setUserByUserEntityId(UserEntity userByUserEntityId) {
+        this.userByUserEntityId = userByUserEntityId;
     }
 
 
-    public Place getPlaceByPlaceId() {
-        return placeByPlaceId;
+    public PlaceEntity getPlaceByPlaceEntityId() {
+        return placeByPlaceEntityId;
     }
 
-    public void setPlaceByPlaceId(Place placeByPlaceId) {
-        this.placeByPlaceId = placeByPlaceId;
+    public void setPlaceByPlaceEntityId(PlaceEntity placeByPlaceEntityId) {
+        this.placeByPlaceEntityId = placeByPlaceEntityId;
     }
 }
