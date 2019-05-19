@@ -13,7 +13,6 @@ public class UserEntity {
     private String password;
     private Boolean active;
     @OneToMany(mappedBy = "userEntity")
-//    private Set<PlaceEntity> placeEntities = new HashSet<PlaceEntity>();
     private Collection<PlaceEntity> placeEntities;
     @Column(name = "user_role_id", nullable = false)
     private long userRoleId;

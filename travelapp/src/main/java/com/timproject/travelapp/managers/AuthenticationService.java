@@ -6,7 +6,10 @@ import com.timproject.travelapp.config.security.TokenAuthenticationService;
 import io.jsonwebtoken.Jwts;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class AuthenticationService {
 
     private UserRepository userRepository;

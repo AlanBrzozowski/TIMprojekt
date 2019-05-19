@@ -12,26 +12,19 @@ public class UserRoleEntity {
     private String label;
     @OneToMany(mappedBy = "userRoleEntity")
     private Collection<UserEntity> userEntities;
-//    @OneToMany(mappedBy = "userRoleByUserRoleId")
-//    private Collection<UserEntity> usersById;
+
 
     public UserRoleEntity(){
 
     }
     public UserRoleEntity(String label
-//                    Collection<UserEntity> usersById
+
     )
     {
         this.label=label;
-//        this.usersById = usersById;
+
     }
-//
-//    public Collection<UserEntity> getUsersById() {
-//        return usersById;
-//    }
-//    public void setUsersById(Collection<UserEntity> usersById) {
-//        this.usersById = usersById;
-//    }
+
 
     public long getId() {
         return id;

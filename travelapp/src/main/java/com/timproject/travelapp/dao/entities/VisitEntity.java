@@ -9,14 +9,14 @@ public class VisitEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private Timestamp date;
     private Boolean visited;
     private Boolean visible;
     @Column(name = "user_id", nullable = false)
-    private Long userId;
+    private long userId;
     @Column(name = "place_id", nullable = false)
-    private Long placeId;
+    private long placeId;
     @OneToMany(mappedBy = "visitByVisitEntityId")
     private Collection<CommentEntity> commentsById;
     @ManyToOne
@@ -30,7 +30,7 @@ public class VisitEntity {
 
     }
 
-    public VisitEntity(Timestamp date, Boolean visited, Boolean visible, Long userId, Long placeId, Collection<CommentEntity> commentsById, UserEntity userByUserEntityId, PlaceEntity placeByPlaceEntityId){
+    public VisitEntity(Timestamp date, Boolean visited, Boolean visible, long userId, long placeId, Collection<CommentEntity> commentsById, UserEntity userByUserEntityId, PlaceEntity placeByPlaceEntityId){
         this.date = date;
         this.visited = visited;
         this.visible = visible;
@@ -41,11 +41,11 @@ public class VisitEntity {
         this.placeByPlaceEntityId = placeByPlaceEntityId;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -73,19 +73,19 @@ public class VisitEntity {
         this.visible = visible;
     }
 
-    public Long getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
-    public Long getPlaceId() {
+    public long getPlaceId() {
         return placeId;
     }
 
-    public void setPlaceId(Long placeId) {
+    public void setPlaceId(long placeId) {
         this.placeId = placeId;
     }
 
