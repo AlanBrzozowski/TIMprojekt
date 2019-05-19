@@ -45,6 +45,7 @@ public class VisitService{
         return visitDTOS;
     }
 
+
     public List<VisitDTO> findMyVisitedPlaces(long userId, HttpHeaders httpHeaders) throws AuthenticationException {
         if (authenticationService.authenticate(httpHeaders, userId)) {
             return findMyPlaces(userId, true);
@@ -60,6 +61,7 @@ public class VisitService{
             throw new AuthenticationException();
         }
     }
+
 
 
     public List<VisitDTO> findMyNotVisitedPlaces(long userId) {
@@ -88,6 +90,7 @@ public class VisitService{
             throw new AuthenticationException();
         }
     }
+
 
     public String deleteVisit(long visitId, long userId, HttpHeaders httpHeaders) throws AuthenticationException {
         if (authenticationService.authenticate(httpHeaders, userId)) {
@@ -132,5 +135,6 @@ public class VisitService{
     public List<VisitDTO> findMyVisitedPlaces(long userId) {
         return findMyPlaces(userId, true);
     }
+
 
 }

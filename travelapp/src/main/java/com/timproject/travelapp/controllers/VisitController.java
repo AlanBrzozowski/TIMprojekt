@@ -23,6 +23,7 @@ public class VisitController {
     }
 
 
+
     @GetMapping(value = "/visit/myVisitedPlaces/{userId}")
     public ResponseEntity findMyVisitedPlaces(@PathVariable long userId, @RequestHeader HttpHeaders httpHeaders) {
         try {
@@ -41,6 +42,8 @@ public class VisitController {
         }
     }
 
+
+
     @PostMapping(value = "/visit/add")
     public ResponseEntity newVisit(@RequestBody VisitEntity visitEntity, @RequestHeader HttpHeaders httpHeaders) {
         try {
@@ -54,6 +57,7 @@ public class VisitController {
             return new ResponseEntity(HttpStatus.FORBIDDEN);
         }
     }
+
 
     @DeleteMapping(value = "/visit/deleteVisit/{visitId}/{userId}")
     public ResponseEntity deleteVisit(@PathVariable long visitId, @PathVariable long userId, @RequestHeader HttpHeaders httpHeaders) {
@@ -82,6 +86,7 @@ public class VisitController {
             return new ResponseEntity(HttpStatus.FORBIDDEN);
         }
     }
+
 
 
 }
